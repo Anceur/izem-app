@@ -8,11 +8,12 @@
         </svg>
       </button>
       
-      <div class="logo-container">
-        <div class="logo">
-          <div class="logo-text">IWEM</div>
+        <div class="logo-container">
+          <div class="logo">
+            <img src="assets/iwem.png" alt="IWEM Logo" class="logo-img" />
+          </div>
         </div>
-      </div>
+
       
       <button class="header-btn cart-btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -26,12 +27,42 @@
     <!-- Product Content -->
     <div class="product-content">
       <!-- Product Showcase -->
-        <div class="product-image-wrapper">
-                  <img [src]="getCurrentProduct().images[0]" 
-                       [alt]="getCurrentProduct().name"
-                       class="product-image"
-                       (error)="onImageError($event)">
-                </div>
+      <div class="product-image-wrapper">
+  <div class="image-slider">
+    <div class="slider-track" [class]="'slide-' + currentProductIndex">
+      <div class="slide" 
+           *ngFor="let product of products; let i = index"
+           [class.active]="i === currentProductIndex">
+        <img [src]="product.images[0]"
+             [alt]="product.name"
+             class="product-image"
+             (error)="onImageError($event)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="slider-nav prev" (click)="previousProduct()">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  
+  <button class="slider-nav next" (click)="nextProduct()">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Slide Indicators -->
+  <div class="slider-indicators">
+    <div class="indicator" 
+         *ngFor="let product of products; let i = index"
+         [class.active]="i === currentProductIndex"
+         (click)="selectProduct(i)">
+    </div>
+  </div>
+</div>
       <!-- Product Details -->
       <div class="product-details">
         <!-- Product Header -->
