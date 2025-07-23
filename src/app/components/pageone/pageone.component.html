@@ -1,63 +1,56 @@
- <ion-app>
-    <div class="product-page">
+<ion-app>
+  <div class="product-page">
+    <!-- Header -->
+    <div class="custom-header">
+      <button class="header-btn back-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
       
-      <!-- Header -->
-      <div class="custom-header">
-        <button class="back-button">←</button>
-        <div class="logo">★</div>
-        <button class="bag-icon">🛍️</button>
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-text">IWEM</div>
+        </div>
       </div>
+      
+      <button class="header-btn cart-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M6 2L3 6V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 10C16 11.1046 15.1046 12 14 12C12.8954 12 12 11.1046 12 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
 
-      <!-- Product Content -->
-      <div class="product-content">
-        
-        <!-- Product Title -->
-        <h1 class="product-title">BLACK COFFEE</h1>
-        <p class="product-subtitle">Starbucks® Bottled Cold Brew Black, Sweetened</p>
-
-        <!-- Product Images Section with Swiper -->
-        <div class="product-images">
-          <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <!-- Slide 1 -->
-              <div class="swiper-slide">
-              <img src="assets/images/coffee-bottle.png" alt="Coffee Bottle" class="product-slide-image" />
-            </div>
-
-                  
-              <!-- Slide 2 -->
-            <div class="swiper-slide">
-              <img src="assets/images/coffee-bottle.png" alt="Coffee Bottle" class="product-slide-image" />
-            </div>
-
-                  
-              <!-- Slide 3 -->
-            <div class="swiper-slide">
-                        <img src="assets/images/coffee-bottle.png" alt="Coffee Bottle" class="product-slide-image" />
-              </div>
-
-                            
-            </div>
-            
-            <!-- Pagination dots -->
-            <div class="swiper-pagination"></div>
-          </div>
+    <!-- Product Content -->
+    <div class="product-content">
+      <!-- Product Showcase -->
+        <div class="product-image-wrapper">
+                  <img [src]="getCurrentProduct().images[0]" 
+                       [alt]="getCurrentProduct().name"
+                       class="product-image"
+                       (error)="onImageError($event)">
+                </div>
+      <!-- Product Details -->
+      <div class="product-details">
+        <!-- Product Header -->
+        <div class="product-header">
+          <h1 class="product-title">Java Bliss Frappuccino</h1>
+          <div class="price">$11</div>
         </div>
 
-        <!-- Description Section -->
-        <div class="description-section">
-          <h3 class="description-title">Description</h3>
-          <p class="description-text">
-            We started with a premium blend of beans specially selected for their rich flavor. Then we added a touch of sweetness to draw out the subtle cocoa notes and the smooth, balanced flavors.
-          </p>
-          
-          <div class="price">£ 7.60</div>
-          
-          <button class="buy-button">BUY NOW</button>
-          
-          <div class="bottom-indicator"></div>
+        <!-- Product Description -->
+        <div class="product-description">
+          <p>An irresistible fusion of mocha sauce, coffee, and Frappuccino chips, blended with milk and ice. Topped with whipped cream and a decadent mocha drizzle.</p>
         </div>
 
+        <!-- Action Button -->
+        <div class="action-buttons">
+          <button class="action-btn">GET IT</button>
+        </div>
       </div>
     </div>
-  </ion-app>
+  </div>
+</ion-app>
+    
