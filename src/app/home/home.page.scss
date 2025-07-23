@@ -1,0 +1,427 @@
+  :root {
+            --ion-color-primary: #76c60d;
+            --ion-color-primary-rgb: 118, 198, 13;
+            --ion-color-primary-contrast: #ffffff;
+            --ion-color-primary-contrast-rgb: 255, 255, 255;
+            --ion-color-primary-shade: #68ae0c;
+            --ion-color-primary-tint: #84cc25;
+        }
+
+        ion-content {
+            --background: linear-gradient(135deg, #76c60de0 0%, #68ae0c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* خلفية الدوائر المتحركة */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        .circle:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            right: 20%;
+            animation-delay: -1s;
+        }
+
+        .circle:nth-child(5) {
+            width: 40px;
+            height: 40px;
+            top: 40%;
+            left: 5%;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* المحتوى الرئيسي */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* الدوائر الدوارة حول الصورة - إضافة جديدة */
+        .rotating-circles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+        }
+
+        .orbit-1 {
+            width: 160px;
+            height: 160px;
+            top: 20px;
+            left: 20px;
+            animation-duration: 12s;
+            border-style: dashed;
+        }
+
+        .orbit-2 {
+            width: 180px;
+            height: 180px;
+            top: 10px;
+            left: 10px;
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+
+        .orbit-3 {
+            width: 200px;
+            height: 200px;
+            top: 0;
+            left: 0;
+            animation-duration: 20s;
+            border-color: rgba(132, 204, 37, 0.3);
+        }
+
+        .orbit-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .orbit-1 .orbit-dot {
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #84cc25;
+            box-shadow: 0 0 15px rgba(132, 204, 37, 0.8);
+        }
+
+        .orbit-2 .orbit-dot {
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+        }
+
+        .orbit-3 .orbit-dot {
+            bottom: -5px;
+            left: 30%;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* دوائر صغيرة إضافية */
+        .mini-particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: particleRotate 8s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            top: 10px;
+            left: 50%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            top: 50%;
+            right: 10px;
+            animation-delay: -2s;
+            background: #84cc25;
+        }
+
+        .particle:nth-child(3) {
+            bottom: 10px;
+            left: 50%;
+            animation-delay: -4s;
+        }
+
+        .particle:nth-child(4) {
+            top: 50%;
+            left: 10px;
+            animation-delay: -6s;
+        }
+
+        .particle:nth-child(5) {
+            top: 25%;
+            right: 25%;
+            animation-delay: -1s;
+        }
+
+        .particle:nth-child(6) {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: -3s;
+            background: rgba(132, 204, 37, 0.8);
+        }
+
+        @keyframes particleRotate {
+            from {
+                transform: rotate(0deg) translateX(110px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                transform: rotate(360deg) translateX(110px) rotate(-360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .card-icon {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 4px 16px rgba(118, 198, 13, 0.2);
+            display: flex;
+            justify-content: center;
+            border-radius: 25px;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 4;
+        }
+
+        .card-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                0 6px 20px rgba(118, 198, 13, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(118, 198, 13, 0.7);
+            }
+            70% {
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(118, 198, 13, 0);
+            }
+            100% {
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(118, 198, 13, 0);
+            }
+        }
+
+        // .starbucks-icon {
+        //     width: 80px;
+        //     height: 80px;
+        //     object-fit: contain;
+        //     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        //     background: #000;
+        //     color: #76c60d;
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     font-weight: bold;
+        //     font-size: 12px;
+        //     border-radius: 15px;
+        // }
+
+        .brand-title h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 10px 0 0 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            max-width: 280px;
+            line-height: 1.4;
+        }
+
+        /* شريط التقدم */
+        .progress-container {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .progress-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        ion-progress-bar {
+            --background: rgba(255, 255, 255, 0.3);
+            --progress-background: #ffffff;
+            height: 8px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تأثيرات إضافية */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) {
+            top: 25%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 70%;
+            right: 15%;
+            animation-delay: -1s;
+        }
+
+        .sparkle:nth-child(3) {
+            top: 15%;
+            right: 30%;
+            animation-delay: -0.5s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* تأثير إضافي للمدارات */
+        .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            border: 1px solid rgba(118, 198, 13, 0.4);
+            border-radius: 50%;
+            animation: glowPulse 3s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.8;
+            }
+        }

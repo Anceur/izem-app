@@ -1,0 +1,312 @@
+ :root {
+      --ion-color-primary: #00704a;
+      --ion-color-primary-rgb: 0, 112, 74;
+      --ion-color-primary-contrast: #ffffff;
+      --ion-color-primary-contrast-rgb: 255, 255, 255;
+      --ion-color-primary-shade: #006041;
+      --ion-color-primary-tint: #1a7f5c;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .product-page {
+      background-color: #f8f8f8;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .custom-header {
+      background: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: #00704a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .bag-icon {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Product Content */
+    .product-content {
+      padding: 0;
+    }
+
+    .product-title {
+      padding: 20px 20px 10px 20px;
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+      color: #1e1e1e;
+    }
+
+    .product-subtitle {
+      padding: 0 20px 20px 20px;
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* Product Images Section */
+    .product-images {
+      background: linear-gradient(135deg, #d4e8e0 0%, #a8d0c0 100%);
+      padding: 0;
+      text-align: center;
+      position: relative;
+      min-height: 400px;
+    }
+
+    /* Swiper Styles */
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      background: #00704a;
+      opacity: 0.5;
+      margin: 0 5px;
+      transition: all 0.3s;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* Slide 1 Styles */
+    .small-product-box {
+      width: 120px;
+      height: 80px;
+      background: #2c1810;
+      border-radius: 8px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .small-product-box::before {
+      content: 'BLACK COFFEE';
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .main-product-bottle {
+      width: 200px;
+      height: 300px;
+      background: linear-gradient(180deg, #2c1810 0%, #1a0f08 100%);
+      border-radius: 15px;
+      position: relative;
+      margin: 0 auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bottle-logo {
+      width: 60px;
+      height: 60px;
+      background: #00704a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .bottle-logo::before {
+      content: '★';
+      color: white;
+      font-size: 24px;
+    }
+
+    .bottle-text {
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .bottle-subtext {
+      color: #ccc;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    /* Slide 2 Styles */
+    .product-image-2 {
+      width: 200px;
+      height: 300px;
+      background: linear-gradient(180deg, #4a3528 0%, #2c1810 100%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .product-image-2::before {
+      content: "COFFEE BEANS";
+      font-size: 16px;
+      text-align: center;
+    }
+
+    /* Slide 3 Styles */
+    .product-image-3 {
+      width: 200px;
+      height: 300px;
+      background: linear-gradient(180deg, #6a4a32 0%, #4a3528 100%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .product-image-3::before {
+      content: "INGREDIENTS";
+      font-size: 16px;
+      text-align: center;
+    }
+
+    /* Description Section */
+    .description-section {
+      background: white;
+      border-radius: 25px 25px 0 0;
+      margin-top: -25px;
+      position: relative;
+      z-index: 10;
+      padding: 30px 20px 120px 20px;
+    }
+
+    .description-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #00704a;
+      margin-bottom: 15px;
+    }
+
+    .description-text {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .price {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1e1e1e;
+      margin-bottom: 20px;
+    }
+
+    .buy-button {
+      background: #00704a;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 0;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .buy-button:hover {
+      background: #006041;
+      transform: translateY(-2px);
+    }
+
+    /* Bottom indicator */
+    .bottom-indicator {
+      width: 40px;
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      .product-title {
+        font-size: 24px;
+      }
+      
+      .main-product-bottle,
+      .product-image-2,
+      .product-image-3 {
+        width: 160px;
+        height: 240px;
+      }
+      
+      .small-product-box {
+        width: 100px;
+        height: 65px;
+      }
+    }

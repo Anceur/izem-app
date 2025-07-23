@@ -1,0 +1,76 @@
+<ion-app>
+        <ion-content fullscreen="true" class="starbucks-content">
+            <!-- خلفية الدوائر المتحركة -->
+            <div class="animated-bg">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                
+                <!-- نجوم متلألئة -->
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
+
+            <!-- المحتوى الرئيسي -->
+            <div class="main-container">
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <!-- حلقة التوهج -->
+                        <div class="glow-ring"></div>
+                        
+                        <!-- الدوائر الدوارة حول الصورة -->
+                        <div class="rotating-circles">
+                            <div class="orbit orbit-1">
+                                <div class="orbit-dot"></div>
+                            </div>
+                            <div class="orbit orbit-2">
+                                <div class="orbit-dot"></div>
+                            </div>
+                            <div class="orbit orbit-3">
+                                <div class="orbit-dot"></div>
+                            </div>
+                        </div>
+
+                        <!-- الجسيمات الصغيرة -->
+                        <div class="mini-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+
+                            <div class="card-icon">
+                              <div class="starbucks-icon">
+                                <img src="/assets/iwem.png" alt="IZEM Logo" class="izem-logo" />
+                              </div>
+                            </div>
+
+                    </div>
+                    
+                    <ion-text class="brand-title">
+                        <h1>IZEM</h1>
+                    </ion-text>
+                    
+                    <p class="description">
+                        Izem Energy de la marque Ifri
+                    </p>
+                </div>
+
+                <!-- شريط التقدم في الأسفل -->
+             <div class="progress-container">
+              <div class="progress-label">Loading...</div>
+              <ion-progress-bar
+                [value]="progressValue"
+                [buffer]="bufferValue"
+                type="buffer"
+              ></ion-progress-bar>
+            </div>
+
+            </div>
+        </ion-content>
+    </ion-app>
