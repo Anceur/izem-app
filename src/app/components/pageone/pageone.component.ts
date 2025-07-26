@@ -1,6 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ElementRef
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 interface Product {
   id: number;
@@ -8,156 +18,109 @@ interface Product {
   price: number;
   currency: string;
   images: string[];
-  inStock: boolean;
-  backgroundColor: string;
-  gradientColors: string[];
   description: string;
-  rating: number;
-  originalPrice?: number;
+  backgroundColor: string;
 }
 
 @Component({
   selector: 'app-pageone',
   standalone: true,
   imports: [CommonModule, IonicModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pageone.component.html',
-  styleUrls: ['./pageone.component.scss'],
+  styleUrls: ['./pageone.component.scss']
 })
-export class PageoneComponent implements OnInit {
+export class PageoneComponent implements AfterViewInit {
+  @ViewChild('productSwiper', { static: false }) productSwiper: any;
   
-   
-  currentProductIndex = 0;
-  cartCount = 0;
-  favoriteProducts: number[] = [];
-
   products: Product[] = [
     {
       id: 1,
       name: 'Energy Original',
-      price: 7.60,
-      originalPrice: 9.50,
-      currency: '£',
-      images: [
-        'assets/izemthree.png',
-        'assets/images/coffee-bottle-2.png',
-        'assets/images/coffee-bottle-3.png'
-      ],
-    
-      description: 'مشروب طاقة مميز مصنوع من أجود أنواع البن المختار بعناية، يمنحك الطاقة والحيوية التي تحتاجها لبداية يوم مثالي.',
-      inStock: true,
-      backgroundColor: '#2c1810',
-      gradientColors: ['#d4e8e0', '#a8d0c0'],
-      rating: 4.5
+      price: 100,
+      currency: 'DA',
+      images: ['assets/izemthree.png'],
+      description: 'Mocha sauce, coffee, and Frappuccino chips.',
+      backgroundColor: 'linear-gradient(135deg, #76c60de0 0%, #68ae0c 100%)'
     },
     {
       id: 2,
       name: 'Energy Cerise',
-      price: 12.50,
-      originalPrice: 15.00,
-      currency: '£',
-      images: [
-        'assets/izemtwo.png',
-        'assets/images/espresso-2.png',
-        'assets/images/espresso-3.png'
-      ],
-     
-      description: 'إسبريسو إيطالي أصيل بنكهة الكرز الطبيعي، محضر بأساليب تقليدية لإعطائك تجربة قهوة لا تُنسى.',
-      inStock: true,
-      backgroundColor: '#4a3528',
-      gradientColors: ['#e8d4c0', '#d0a890'],
-      rating: 4.8
+      price: 120,
+      currency: 'DA',
+      images: ['assets/izemtwo.png'],
+      description: 'Refreshing cherry flavor.',
+      backgroundColor: 'linear-gradient(135deg, #b52282 0%, #8b1a5c 100%)'
     },
     {
       id: 3,
       name: 'Coco Myrtille',
-      price: 9.25,
-      currency: '£',
-      images: [
-        'assets/izemone.png',
-      ],
-    
-      description: 'مزيج رائع من جوز الهند والتوت الأزرق، يقدم لك طعماً منعشاً ومميزاً مع كل رشفة.',
-      inStock: false,
-      backgroundColor: '#6a4a32',
-      gradientColors: ['#f4e6d0', '#e8c4a0'],
-      rating: 4.2
+      price: 110,
+      currency: 'DA',
+      images: ['assets/izemone.png'],
+      description: 'Coconut and blueberry combo.',
+      backgroundColor: 'linear-gradient(135deg, #b1adac 0%, #8a8584 100%)'
     }
   ];
 
-  constructor() {}
+  currentProductIndex: number = 0;
 
-  ngOnInit() {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private elementRef: ElementRef
+  ) {}
 
-  getCurrentProduct(): Product {
-    return this.products[this.currentProductIndex];
+  ngAfterViewInit() {
+    this.initSwiper();
+    // Set initial background
+    this.updateBackground();
   }
 
-  nextProduct() {
-    this.currentProductIndex = (this.currentProductIndex + 1) % this.products.length;
+  initSwiper() {
+    setTimeout(() => {
+      if (this.productSwiper?.nativeElement) {
+        const swiperEl = this.productSwiper.nativeElement;
+        
+        swiperEl.swiper.params.allowTouchMove = true;
+        
+        swiperEl.addEventListener('slidechange', () => {
+          this.currentProductIndex = swiperEl.swiper.activeIndex;
+          this.updateBackground();
+          this.cdr.detectChanges();
+        });
+      }
+    }, 300);
   }
 
-  previousProduct() {
-    this.currentProductIndex = (this.currentProductIndex - 1 + this.products.length) % this.products.length;
+  onSwiperInit(swiper: any) {
+    console.log('Swiper initialized', swiper);
+    this.initSwiper();
   }
 
-  selectProduct(index: number) {
-    this.currentProductIndex = index;
-  }
-
-  addToCart(product: Product) {
-    if (product.inStock) {
-      this.cartCount++;
-      console.log('Adding to cart:', product);
-      // إضافة منطق إضافة المنتج إلى السلة
+  goToSlide(index: number) {
+    if (this.productSwiper?.nativeElement?.swiper) {
+      this.productSwiper.nativeElement.swiper.slideTo(index);
+      this.currentProductIndex = index;
+      this.updateBackground();
+      this.cdr.detectChanges();
     }
   }
 
-  toggleFavorite(product: Product) {
-    const index = this.favoriteProducts.indexOf(product.id);
-    if (index > -1) {
-      this.favoriteProducts.splice(index, 1);
-    } else {
-      this.favoriteProducts.push(product.id);
+  // دالة جديدة لتحديث الخلفية
+  updateBackground() {
+    const productPage = this.elementRef.nativeElement.querySelector('.product-page');
+    if (productPage && this.products[this.currentProductIndex]) {
+      const currentBg = this.products[this.currentProductIndex].backgroundColor;
+      productPage.style.background = currentBg;
+      productPage.style.transition = 'background 0.5s ease-in-out';
     }
-  }
-
-  isFavorite(product: Product): boolean {
-    return this.favoriteProducts.includes(product.id);
-  }
-
-  getStarsArray(rating: number): number[] {
-    return Array(5).fill(0).map((_, i) => i + 1);
-  }
-
-  getDiscountPercentage(): number {
-    const current = this.getCurrentProduct();
-    if (current.originalPrice) {
-      return Math.round(((current.originalPrice - current.price) / current.originalPrice) * 100);
-    }
-    return 0;
   }
 
   onImageError(event: any) {
     event.target.src = 'assets/placeholder-product.png';
   }
 
-  goBack() {
-    console.log('Going back');
-  }
-
-  openCart() {
-    console.log('Opening cart');
-  }
-
-  buyNow() {
-    console.log('Buy now clicked');
-  }
-
-  shareProduct() {
-    console.log('Sharing product');
-  }
-
-  addToCompare() {
-    console.log('Adding to compare');
+  get currentProduct(): Product {
+    return this.products[this.currentProductIndex];
   }
 }
