@@ -1,5 +1,8 @@
 <ion-app>
-  <div class="product-page">
+  <div class="product-page" [style.background]="currentProduct.backgroundColor">
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+    
     <!-- Header -->
     <div class="custom-header">
       <div class="logo-container">
@@ -19,7 +22,6 @@
           slides-per-view="1"
           class="product-swiper"
           (swiper)="onSwiperInit($event)">
-                   
           <swiper-slide *ngFor="let product of products; let i = index">
             <div class="slide-content">
               <img
@@ -32,14 +34,15 @@
         </swiper-container>
 
         <!-- Custom Indicators -->
-        <div class="custom-indicators">
+        <!-- <div class="custom-indicators">
           <span
             *ngFor="let product of products; let i = index"
             class="indicator"
             [class.active]="i === currentProductIndex"
+            [class.pulse]="i === currentProductIndex"
             (click)="goToSlide(i)">
           </span>
-        </div>
+        </div> -->
       </div>
 
       <!-- Product Details -->
