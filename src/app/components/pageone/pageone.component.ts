@@ -17,6 +17,8 @@ interface Product {
   name: string;
   price: number;
   currency: string;
+  category: string;
+  discount?: number;
   images: string[];
   description: string;
   backgroundColor: string;
@@ -41,30 +43,36 @@ export class PageoneComponent implements AfterViewInit {
       name: 'Energy Original',
       price: 100,
       currency: 'DA',
+      category: 'Boissons Énergisantes',
+      discount: 15,
       images: ['assets/izemthree.png'],
-      description: 'Mocha sauce, coffee, and Frappuccino chips.',
+      description: 'Découvrez IZEM Energy Original de Ifri. la boisson énergisante gazeuse algérienne au format 50cl',
       backgroundColor: 'linear-gradient(135deg, #000000e0 0%, #000000ff 100%)',
       textColor: '#ffffff',
       indicatorColor: '#ffffff'
     },
     {
       id: 2,
-      name: 'Energy Cerise',
+      name: 'IZEM Energy Cerise',
       price: 120,
       currency: 'DA',
+      category: 'Boissons Énergisantes',
+      discount: 10,
       images: ['assets/izemtwo.png'],
-      description: 'Refreshing cherry flavor.',
+      description: 'Découvrez IZEM Energy Cerise de Ifri, une boisson énergisante qui allie le goût intense de la cerise pour une expérience rafraîchissante.',
       backgroundColor: 'linear-gradient(135deg, #b52282 0%, #8b1a5c 100%)',
       textColor: '#ffffff',
       indicatorColor: '#ffffff'
     },
     {
       id: 3,
-      name: 'Coco Myrtille',
+      name: 'IZEM Energy Coco',
       price: 110,
       currency: 'DA',
+      category: 'Boissons Énergisantes',
+      discount: 20,
       images: ['assets/izemone.png'],
-      description: 'Coconut and blueberry combo.',
+      description: 'Découvrez IZEM Energy by Ifri, la boisson énergisante gazeuse algérienne au format 50cl',
       backgroundColor: 'linear-gradient(135deg, #b1adac 0%, #8a8584 100%)',
       textColor: '#ffffff',
       indicatorColor: '#ffffff'
@@ -110,12 +118,6 @@ export class PageoneComponent implements AfterViewInit {
   applySlideEffects() {
     const swiperEl = this.productSwiper.nativeElement;
     const activeIndex = swiperEl.swiper.realIndex;
-    
-    // Update background
-    const productPage = this.elementRef.nativeElement.querySelector('.product-page');
-    if (productPage) {
-      productPage.style.background = this.products[activeIndex].backgroundColor;
-    }
     
     // Update image effects
     const slides = swiperEl.swiper.slides;

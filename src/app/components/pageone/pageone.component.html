@@ -32,28 +32,27 @@
             </div>
           </swiper-slide>
         </swiper-container>
-
-        <!-- Custom Indicators -->
-        <!-- <div class="custom-indicators">
-          <span
-            *ngFor="let product of products; let i = index"
-            class="indicator"
-            [class.active]="i === currentProductIndex"
-            [class.pulse]="i === currentProductIndex"
-            (click)="goToSlide(i)">
-          </span>
-        </div> -->
       </div>
 
       <!-- Product Details -->
       <div class="product-details">
-        <div class="product-header">
+        <div class="product-meta">
+          <div class="product-category">{{ currentProduct.category }}</div>
           <h1 class="product-title">{{ currentProduct.name }}</h1>
+        </div>
+        <div class="price-container">
           <div class="price">
             {{ currentProduct.price }} {{ currentProduct.currency }}
           </div>
+          <div class="price-badge" *ngIf="currentProduct.discount">
+            {{ currentProduct.discount }}% OFF
+          </div>
         </div>
         <div class="product-description">
+          <div class="description-header">
+            <h2>Description</h2>
+            <div class="description-divider"></div>
+          </div>
           <p>{{ currentProduct.description }}</p>
         </div>
       </div>
